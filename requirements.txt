@@ -6,3 +6,4 @@ numpy==1.19.0
 scikit_learn==0.24.2
 mysql-connector-python==8.0.28
 Flask-Cors==3.0.10
+gunicorn==20.1.0
