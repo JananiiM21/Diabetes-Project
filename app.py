@@ -30,6 +30,8 @@ def home():
     if request.method == 'POST':
         data = request.json
         cursor = mysql.cursor()
+        # mobilenumber=str(data.get('mnumber'))
+        patient_id=int(data.get('patient_id'))
         pregs = int(data.get('pregs'))
         gluc = int(data.get('gluc'))
         bp = int(data.get('bp'))
@@ -38,7 +40,7 @@ def home():
         bmi = float(data.get('bmi'))
         func = float(data.get('func'))
         age = int(data.get('age'))
-
+        
         input_features = [[pregs, gluc, bp, skin, insulin, bmi, func, age]]
         # print(input_features)
         prediction = model.predict(scaler.transform(input_features))
@@ -47,13 +49,15 @@ def home():
         prediction_value = prediction[0].item()
 
         insert_query = """
-        INSERT INTO diabetes_patient_data (pregs, gluc, bp, skin, insulin, bmi, func, age, result)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+        INSERT INTO diabetes2 (patient_id, pregs, gluc, bp, skin, insuli, fun, result)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         """
 
-        data = (pregs, gluc, bp, skin, insulin, bmi, func, age, prediction_value)
+        insert_data = (patient_id, pregs, gluc, bp, skin, insulin, func, prediction_value)
 
-        cursor.execute(insert_query, data)
+        cursor.execute(insert_query, insert_data)
+
+        
         mysql.commit()
         cursor.close()
 
