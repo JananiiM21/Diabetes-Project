@@ -4,13 +4,13 @@ from flask_cors import CORS
 
 import pickle
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecret'
 
 scaler = pickle.load(open('scaler.pkl', 'rb'))
 model = pickle.load(open('svm_model.pkl', 'rb'))
 
-# app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 CORS(app, origins="*", supports_credentials=True, methods=["GET", "POST", "OPTIONS", "PUT", "DELETE"])
 
 app.config['PROPAGATE_EXCEPTIONS'] = True
