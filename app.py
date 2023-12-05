@@ -11,7 +11,7 @@ scaler = pickle.load(open('scaler.pkl', 'rb'))
 model = pickle.load(open('svm_model.pkl', 'rb'))
 
 app = Flask(__name__, template_folder='templates')
-CORS(app, origins=["http://localhost:3000", "https://e-react-node-backend-22ed6864d5f3.herokuapp.com"])
+CORS(app, origins="*", supports_credentials=True, methods=["GET", "POST", "OPTIONS", "PUT", "DELETE"])
 
 app.config['PROPAGATE_EXCEPTIONS'] = True
 
