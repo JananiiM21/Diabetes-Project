@@ -7,7 +7,7 @@ import pickle
 scaler = pickle.load(open('scaler.pkl', 'rb'))
 model = pickle.load(open('svm_model.pkl', 'rb'))
 
-# app = Flask(__name__)
+app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecret'
 
 
