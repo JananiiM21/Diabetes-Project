@@ -36,12 +36,12 @@ def home():
         gluc = int(data.get('gluc'))
         bp = int(data.get('bp'))
         skin = int(data.get('skin'))
-        insulin = float(data.get('insulin'))
+        insuli = float(data.get('insuli'))
         bmi = float(data.get('bmi'))
-        func = float(data.get('func'))
+        fun = float(data.get('fun'))
         age = int(data.get('age'))
         
-        input_features = [[pregs, gluc, bp, skin, insulin, bmi, func, age]]
+        input_features = [[pregs, gluc, bp, skin, insuli, bmi, fun, age]]
         # print(input_features)
         prediction = model.predict(scaler.transform(input_features))
         # print(prediction)
@@ -53,7 +53,7 @@ def home():
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         """
 
-        insert_data = (patient_id, pregs, gluc, bp, skin, insulin, func, prediction_value)
+        insert_data = (patient_id, pregs, gluc, bp, skin, insuli, fun, prediction_value)
 
         cursor.execute(insert_query, insert_data)
 
