@@ -4,7 +4,7 @@ from flask_cors import CORS
 
 import pickle
 
-app = Flask(__name__)
+# app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecret'
 
 scaler = pickle.load(open('scaler.pkl', 'rb'))
