@@ -11,7 +11,7 @@ scaler = pickle.load(open('scaler.pkl', 'rb'))
 model = pickle.load(open('svm_model.pkl', 'rb'))
 
 app = Flask(__name__, template_folder='templates')
-CORS(app, origins='*')
+CORS(app, origins='*', supports_credentials=True, expose_headers='Authorization', max_age=3600, send_wildcard=True, intercept_exceptions=False)
 
 app.config['PROPAGATE_EXCEPTIONS'] = True
 
