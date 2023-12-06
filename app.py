@@ -12,14 +12,7 @@ CORS(app, origins="*", supports_credentials=True, methods=["GET", "POST", "OPTIO
 app.config['SECRET_KEY'] = 'supersecret'
 app.config['PROPAGATE_EXCEPTIONS'] = True
 
-mysql_config = {
-    'host': "frwahxxknm9kwy6c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    'user': "j6qbx3bgjysst4jr",
-    'password': "mcbsdk2s27ldf37t",
-    'database': "nkw2tiuvgv6ufu1z",
-    'port': 3306,
-}
-mysql = mysql.connector.connect(**mysql_config)
+
 
 @app.route('/submit', methods=['POST'])
 def submit():
