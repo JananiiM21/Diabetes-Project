@@ -41,17 +41,7 @@ def submit():
         prediction = model.predict(scaler.transform(input_features))
         prediction_value = prediction[0].item()
 
-        insert_query = """
-        INSERT INTO diabetes2 (patient_id, pregs, gluc, bp, skin, insuli, fun, result)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-        """
-
-        insert_data = (patient_id, pregs, gluc, bp, skin, insuli, fun, prediction_value)
-
-        cursor.execute(insert_query, insert_data)
-
-        mysql.commit()
-        cursor.close()
+       
 
         if prediction_value == 0:
             return jsonify(message='It is unlikely for the patient to have diabetes!', prediction_value=prediction_value)
