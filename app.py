@@ -19,7 +19,7 @@ def submit():
     prediction = -1
     if request.method == 'POST':
         data = request.json
-        cursor = mysql.cursor()
+       
         patient_id = int(data.get('patient_id'))
         pregs = int(data.get('pregs'))
         gluc = int(data.get('gluc'))
