@@ -6,7 +6,7 @@ import pickle
 scaler = pickle.load(open('scaler.pkl', 'rb'))
 model = pickle.load(open('svm_model.pkl', 'rb'))
 
-app = Flask(_name_)
+app = Flask(__name__)
 CORS(app, origins="*", supports_credentials=True, methods=["GET", "POST", "OPTIONS", "PUT", "DELETE"])
 
 app.config['SECRET_KEY'] = 'supersecret'
@@ -27,7 +27,6 @@ def submit():
     if request.method == 'POST':
         data = request.json
         cursor = mysql.cursor()
-        # mobilenumber=str(data.get('mnumber'))
         patient_id = int(data.get('patient_id'))
         pregs = int(data.get('pregs'))
         gluc = int(data.get('gluc'))
@@ -67,5 +66,5 @@ def status():
 
     return "Diabetes Disease Detection"
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(debug=True)
